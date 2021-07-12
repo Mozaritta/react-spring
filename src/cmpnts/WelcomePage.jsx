@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 
 class WelcomePage extends Component {
+
+    constructor(props){
+        super(props)
+
+        this.state = {
+
+        }
+    }
+
     render() {
         return (
-            <div>
-                <h2>Welcome to Employee page</h2>
-                <button className="btn btn-primary" onClick="{this.componentDidMount}"></button>
+            <div className="text-center">
+                <h2 className="text-center">Welcome to Employee page</h2>
             </div>
         );
     }

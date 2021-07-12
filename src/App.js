@@ -1,6 +1,8 @@
 import './App.css';
 import HeaderComponent from './cmpnts/HeaderComponent';
 import FooterComponent from './cmpnts/FooterComponent';
+import ListEmployeeComponent from './cmpnts/ListEmployeeComponent';
+import CreateEmployeeComponent from './cmpnts/CreateEmployeeComponent';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -10,9 +12,9 @@ function App() {
         <HeaderComponent/>
         <div  className="container">
           <Switch>
-            <Route path="/" exact component="{WelcomePage}"></Route>
-            <Route path="/employees" component="{ListEmployeeComponent}"></Route>
-            <Route path="/add_employee" component="{CreateEmployeeComponent}"></Route>
+            <Route path="/" exact component={ListEmployeeComponent}></Route>
+            <Route path="/employees" component={ListEmployeeComponent}></Route>
+            <Route path="/add_employee" component={CreateEmployeeComponent}></Route>
           </Switch>
         </div>
         <FooterComponent/>

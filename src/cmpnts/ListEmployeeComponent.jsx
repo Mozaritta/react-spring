@@ -17,7 +17,7 @@ class ListEmployeeComponent extends Component {
         })
     }
 
-    addEmployee(){
+    addEmployee() {
         this.props.history.push('/add_employee')
     }
     
@@ -26,7 +26,7 @@ class ListEmployeeComponent extends Component {
             <div>
                 <h2 className="text-center">Employee List</h2>
                 <div className="row">
-                    <button className="btn btn-primary" onClick="{this.addEmployee}"></button>
+                    <button className="btn btn-primary" onClick={this.addEmployee} style={{marginBlockStart: "30px", marginBlockEnd: "10px"}}>Add Employee</button>
                 </div>
                 <div className="row">
                     <table className='table table-striped table bordered'>
