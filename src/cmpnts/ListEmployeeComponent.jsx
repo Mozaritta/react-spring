@@ -10,6 +10,7 @@ class ListEmployeeComponent extends Component {
         }
 
         this.addEmployee = this.addEmployee.bind(this)
+        this.upEmployee = this.upEmployee.bind(this)
     }
     componentDidMount(){
         EmployeeService.getEmployee().then((res ) => {
@@ -20,18 +21,22 @@ class ListEmployeeComponent extends Component {
     addEmployee() {
         this.props.history.push('/add_employee')
     }
+
+    upEmployee(id) {
+        this.props.history.push(`/update/${id}`)
+    }
     
     render() {
         return (
             <div>
                 <h2 className="text-center">Employee List</h2>
                 <div className="row">
-                    <button className="btn btn-primary" onClick={this.addEmployee} style={{marginBlockStart: "30px", marginBlockEnd: "10px"}}>Add Employee</button>
+                    <button className="btn btn-primary" onClick={this.addEmployee} style={{marginBlockStart: "30px", marginBlockEnd: "10px", marginInline: "10px"}}>Add Employee</button>
                 </div>
                 <div className="row">
                     <table className='table table-striped table bordered'>
                         <thead>
-                            <tr>
+                            <tr style={{textAlign:"center", backgroundColor:"blueviolet", color:"white"}}>
                             <th>Employee First Name</th>
                             <th>Employee Last Name</th>
                             <th>Employee Email</th>
@@ -43,10 +48,14 @@ class ListEmployeeComponent extends Component {
                             {
                                 this.state.employees.map(
                                     employee =>
-                                    <tr key = {employee.id}>
+                                    <tr key = {employee.id} style={{textAlign:"center", backgroundColor:"lightblue"}}>
                                         <td>{employee.firstName}</td> 
                                         <td>{employee.lastName}</td> 
-                                        <td>{employee.emailId}</td> 
+                                        <td>{employee.emailId}</td>
+                                        <td>
+                                            <button className="btn btn-success" onClick={ () => this.upEmployee(employee.id)}>Update</button>
+                                            <button className="btn btn-danger" onClick = { () => this.upEmployee(employee.id)} style={{marginInline: "10px"}}>Delete</button>
+                                        </td>
                                     </tr>
                                 )
                             }

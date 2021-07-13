@@ -6,6 +6,7 @@ class CreateEmployeeComponent extends Component {
         super(props)
 
         this.state = {
+            id: this.props.match.params.id,
             firstName : '',
             lastName : '',
             emailId : ''
@@ -17,10 +18,39 @@ class CreateEmployeeComponent extends Component {
         
     }
 
+    componentDidMount(){
+        EmployeeService.getEmployeeById(this.state.id).then(res => {
+            let employee = res.data
+            this.setState({
+                firstName: employee.firstName,
+                lastName: employee.lastName,
+                emailId: employee.emailId
+            })
+        })
+    }
+
+    updateEmployee = (e) => {
+        e.preventDefault()
+        let employee = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            emailId: this.state.emailId
+        }
+        console.log('employee => ' + JSON.stringify(employee))
+        console.log('employee => ' + JSON.stringify(this.state.id))
+        EmployeeService.updateEmployee(employee, this.state.id).then( res => {
+            this.props.history.push('/employees')
+        })
+    }
+
     saveEmployee = (e) => {
         e.preventDefault();
 
-        let employee = {firstName: this.state.firstName, lastName: this.state.lastName, emailId: this.state.emailId};
+        let employee = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            emailId: this.state.emailId
+        }
 
         EmployeeService.createEmployee(employee).then(res => {
             this.props.history.push('/employees')

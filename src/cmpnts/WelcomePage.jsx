@@ -10,10 +10,15 @@ class WelcomePage extends Component {
         }
     }
 
+    listEmployee() {
+        this.props.history.push('/employees')
+    }
+
     render() {
         return (
             <div className="text-center">
                 <h2 className="text-center">Welcome to Employee page</h2>
+                <button className="btn btn-primary" onClick={this.listEmployee.bind(this)} style={{marginBlockStart: "30px", marginBlockEnd: "10px"}}>Employee List</button>
             </div>
         );
     }
