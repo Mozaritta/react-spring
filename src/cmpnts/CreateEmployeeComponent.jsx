@@ -56,9 +56,9 @@ class CreateEmployeeComponent extends Component {
 
     getTitle(){
         if(this.state.id === '_add'){
-            return <h3 className="text-center">Add Employee</h3>
+            return <h3 className="text-center" style={{color:"black", marginBlockStart:"50px", border:"2px solid black"}}>Add Employee</h3>
         }else{
-            return <h3 className="text-center">Update Employee</h3>
+            return <h3 className="text-center" style={{color:"black", marginBlockStart:"50px", border:"2px solid black"}}>Update Employee</h3>
         }
     }
 
@@ -81,7 +81,7 @@ class CreateEmployeeComponent extends Component {
             <br/><br/>
             <div className="container">
                 <div className="row">
-                    <div className="card col-md-6 offset-md-3 offset-md-3">
+                    <div className="card col-md-6 offset-md-3 offset-md-3" style={{marginBlockEnd:"70px", marginBlockStart:"50px"}}>
                         
                         {
                             this.getTitle()
