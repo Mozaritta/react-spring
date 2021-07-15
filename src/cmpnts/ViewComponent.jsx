@@ -7,20 +7,15 @@ export default class ViewComponent extends Component {
 
         this.state = {
             id: this.props.match.params.id,
-            firstName : '',
-            lastName : '',
-            emailId : ''
+            employee:{}
         }
 
     }
 
     viewEmployee(id){
         EmployeeService.getEmployeeById(this.state.id).then(res => {
-            let employee = res.data
             this.setState({
-                firstName: employee.firstName,
-                lastName: employee.lastName,
-                emailId: employee.emailId
+                employee : res.data
             })
         })
     }
@@ -35,18 +30,11 @@ export default class ViewComponent extends Component {
                             
                             <h3>View Employee</h3>
                             <div className="card-body">
-                            
                                     <div>
                                         <span>Firstname :</span>
-                                        <span>{this.state.firstName}</span>
-                                        <br/>
-                                        <br/>
-                                        <span>Lastname :</span>
-                                        <span>{this.state.lastName}</span>
-                                        <br/>
-                                        <br/>
-                                        <span>Email :</span>
-                                        <span>{this.state.emailId}</span>
+                                        <span>{this.props.employee.firstName}</span>
+                                        <span>{this.props.employee.lastName}</span>
+                                        <span>{this.props.employee.emailId}</span>
                                     </div>
                             </div>
                         </div>
@@ -57,3 +45,7 @@ export default class ViewComponent extends Component {
         )
     }
 }
+    
+
+    
+
