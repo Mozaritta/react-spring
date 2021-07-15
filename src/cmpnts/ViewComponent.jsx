@@ -12,12 +12,16 @@ export default class ViewComponent extends Component {
 
     }
 
-    viewEmployee(id){
+    componentDidMount(id){
         EmployeeService.getEmployeeById(this.state.id).then(res => {
             this.setState({
                 employee : res.data
             })
         })
+    }
+
+    home() {
+        this.props.history.push('/employees')
     }
 
     render() {
@@ -30,13 +34,23 @@ export default class ViewComponent extends Component {
                             
                             <h3>View Employee</h3>
                             <div className="card-body">
-                                    <div>
-                                        <span>Firstname :</span>
-                                        <span>{this.props.employee.firstName}</span>
-                                        <span>{this.props.employee.lastName}</span>
-                                        <span>{this.props.employee.emailId}</span>
-                                    </div>
+                                <div>
+                                    <span>Firstname :</span>
+                                    <span> {this.state.employee.firstName}</span>
+                                    <br/>
+                                    <br/>
+                                    <span>Lastname :</span>
+                                    <span> {this.state.employee.lastName}</span>
+                                    <br/>
+                                    <br/>
+                                    <span>Email :</span>
+                                    <span> {this.state.employee.emailId}</span>
+                                    <br/>
+                                    <br/>
+                                    <button className="btn btn-primary" onClick={this.home.bind(this)} >Home</button>
+                                </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
